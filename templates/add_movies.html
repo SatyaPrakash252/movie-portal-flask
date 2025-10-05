@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="add-movie-card glass-panel">
+  <h3>{{ movie.title if movie else 'Add Movie' }}</h3>
+  <form method="post" enctype="multipart/form-data">
+    <label>Title</label>
+    <input name="title" required value="{{ movie.title if movie else '' }}">
+    <label>Year</label>
+    <input name="year" value="{{ movie.year if movie else '' }}">
+    <label>Box Office</label>
+    <input name="box_office" value="{{ movie.box_office if movie else '' }}">
+    <label>Director</label>
+    <input name="director" value="{{ movie.director if movie else '' }}">
+    <label>Producer</label>
+    <input name="producer" value="{{ movie.producer if movie else '' }}">
+    <label>Cast (comma separated)</label>
+    <textarea name="cast">{{ movie.cast if movie else '' }}</textarea>
+    <label>Poster file (optional)</label>
+    <input type="file" name="poster_file" accept="image/*">
+    <label>TMDB Movie ID (optional)</label>
+    <input name="tmdb_id" value="{{ movie.tmdb_id if movie else '' }}">
+    <div class="mt-3">
+      <button class="glass-btn">Save</button>
+      <a href="{{ url_for('admin_dashboard') }}" class="glass-btn">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

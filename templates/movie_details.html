@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="detail-glass">
+  <div class="detail-left">
+    <img src="{{ movie.poster_url }}" alt="{{ movie.title }}" onerror="this.onerror=null;this.src='/static/images/default_poster.png'">
+  </div>
+  <div class="detail-right">
+    <div class="detail-panel">
+      <h2 class="title">{{ movie.title }} <span class="muted">({{ movie.year }})</span></h2>
+      <p class="sub">Box Office: <strong>{{ movie.box_office or 'N/A' }}</strong></p>
+      <p class="meta">Director: {{ movie.director or 'Unknown' }}</p>
+      <p class="meta">Producer: {{ movie.producer or 'Unknown' }}</p>
+      <h5>Cast</h5>
+      <p class="cast small">{{ movie.cast or 'Not available' }}</p>
+      <div class="detail-actions mt-3">
+        <a href="{{ url_for('index') }}" class="glass-btn">Back</a>
+        {% if session.get('role') == 'admin' %}
+          <a href="{{ url_for('edit_movie', id=movie.id) }}" class="glass-btn">Edit</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

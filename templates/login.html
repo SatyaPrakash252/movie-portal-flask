@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-card">
+  <h2>Welcome back</h2>
+  <p class="small muted">Login to access your account</p>
+  <form method="post" class="auth-form">
+    <label>Username or Email</label>
+    <input name="identifier" required />
+    <label>Password</label>
+    <input name="password" type="password" required />
+    <button class="glass-btn full">Login</button>
+  </form>
+  <div class="auth-foot mt-2">
+    <small>Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a></small>
+  </div>
+</div>
+{% endblock %}

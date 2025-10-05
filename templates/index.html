@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1 class="hero-title">Top Movies</h1>
+  <p class="hero-sub">Collection of TOP 1000 Movies of all time.</p>
+</section>
+
+<section class="movie-grid">
+  <div class="grid">
+    {% for movie in movies.items %}
+      <div class="card-glass movie-card" data-id="{{ movie.id }}">
+        <div class="poster-wrap">
+          <img src="{{ movie.poster_url }}" alt="{{ movie.title }}" loading="lazy" onerror="this.onerror=null;this.src='/static/images/default_poster.png';">
+        </div>
+        <div class="movie-info">
+          <h5 class="movie-title">{{ movie.title }}</h5>
+          <p class="movie-meta">{{ movie.year }} · {{ movie.director or 'Unknown' }}</p>
+        </div>
+        <div class="card-actions">
+          <button class="glass-btn view-btn" data-id="{{ movie.id }}">View</button>
+          {% if session.get('role') == 'admin' %}
+            <a href="{{ url_for('edit_movie', id=movie.id) }}" class="glass-btn">Edit</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <nav class="pagination-nav mt-4">
+    <div class="d-flex justify-content-center align-items-center gap-2">
+      {% if movies.has_prev %}
+        <a href="{{ url_for('index', page=movies.prev_num, q=q) }}" class="glass-btn">Prev</a>
+      {% endif %}
+      <span class="glass-pill">Page {{ movies.page }} / {{ movies.pages or 1 }}</span>
+      {% if movies.has_next %}
+        <a href="{{ url_for('index', page=movies.next_num, q=q) }}" class="glass-btn">Next</a>
+      {% endif %}
+    </div>
+  </nav>
+</section>
+{% endblock %}
