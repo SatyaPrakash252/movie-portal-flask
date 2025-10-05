@@ -368,4 +368,14 @@ def uploaded_file(filename):
 if __name__ == "__main__":
     with app.app_context():
         create_default_admin()
+        # ✅ Create all database tables automatically if they don't exist
+with app.app_context():
+    from sqlalchemy import inspect
+    inspector = inspect(db.engine)
+    if not inspector.has_table("movie"):
+        db.create_all()
+        print("✅ Database tables created successfully!")
+    else:
+        print("✅ Database already exists.")
+
     app.run(debug=True)
