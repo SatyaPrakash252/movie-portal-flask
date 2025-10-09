@@ -108,6 +108,9 @@ Then visit 👉 [http://127.0.0.1:5000](http://127.0.0.1:5000)
 4. Start Command → `gunicorn app:app`
 5. Add your TMDB_API_KEY in Render Environment Variables.
 
+After deployment, you’ll get your live URL like:
+```
+https://movie-portal.onrender.com
 ```
 
 ---
@@ -122,11 +125,11 @@ Then visit 👉 [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 ## 👨‍💻 Contributors
 
-- **Frontend Developer:** Satya 🌟  
-- **Backend Developer:** Likuna 
+- **Frontend Developer:** Satya   
+- **Backend Developer:** Likuna  
 - **API Integration & Design:** Saipriya and Deepsikha
 - **Database:** Arpeet
-- **Documentations:** Saipriya and Deepsikha
+- **Documentation:** Saipriya and Deepsikha  
 
 ---
 
